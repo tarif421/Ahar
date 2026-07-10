@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from './Logo'; // লোগো কম্পোনেন্ট ইম্পোর্ট করছি
+import Logo from './Logo'; 
 
 const Navbar = () => {
   return (
@@ -11,13 +11,13 @@ const Navbar = () => {
 
         {/* Center: Navigation Links (Hidden on Mobile) */}
         <div className="hidden md:flex items-center gap-8 font-semibold text-muted">
-          <a href="#home" className="text-primary hover:text-primary-hover transition-colors">Home</a>
-          <a href="#menu" className="hover:text-foreground transition-colors">Menu</a>
+          <a href="/" className="text-primary hover:text-primary-hover transition-colors">Home</a>
+          <a href="menu" className="hover:text-foreground transition-colors">Menu</a>
           <a href="#about" className="hover:text-foreground transition-colors">About Us</a>
           <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
         </div>
 
-        {/* Right Side: Actions (Cart & CTA) */}
+        {/* Right Side */}
         <div className="flex items-center gap-4">
           {/* Cart Icon */}
           <button className="relative p-2 rounded-full hover:bg-input-theme text-foreground transition-colors">
