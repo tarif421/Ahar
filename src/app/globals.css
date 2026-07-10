@@ -3,6 +3,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Yantun Khaijan Food Brand Colors (Light Mode) */
+  --color-primary: #ef4444;    /* Appetizing Red (যেমন: red-500) */
+  --color-secondary: #f97316;  /* Fresh Orange (যেমন: orange-500) */
+  --color-accent: #f59e0b;     /* Warm Amber (যেমন: amber-500) */
+  --color-card-bg: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    
+    /* Dark Mode Food Colors (একটু সফট টোন যাতে চোখে না লাগে) */
+    --color-primary: #f87171;    /* red-400 */
+    --color-secondary: #fb923c;  /* orange-400 */
+    --color-accent: #fbbf24;     /* amber-400 */
+    --color-card-bg: #1e293b;    /* slate-800 */
+  }
 }
 
 @theme inline {
@@ -10,13 +29,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  /* Tailwind-এ ব্যবহার করার জন্য ভ্যারিয়েবল ম্যাপিং */
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-card: var(--color-card-bg);
 }
 
 body {
