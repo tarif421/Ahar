@@ -18,10 +18,10 @@ const Banner = () => {
             Craving Something Delicious? 20% OFF Your First Order!
           </div>
 
-          {/* Heading with global text-foreground and brand gradients */}
+          {/* Heading with global text-foreground and brand gradients mapped to "Ahar" */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-foreground leading-[1.15]">
             Savor the Authentic <br />
-            Taste of <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Yantun Khaijan</span>
+            Taste of <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Ahar</span>
           </h1>
 
           {/* Subtitle */}

@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Logo from "./components/Logo";
+
+import Navbar from "./components/Home/layouts/Navbar";
+import Footer from "./components/Home/layouts/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,14 +27,10 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <header className="py-2 md:w-11/12 md:mx-auto">
-          <Logo />
+          <Navbar/>
         </header>
         <main className="flex-grow py-6 px-6">{children}</main>
-        <footer className="py-4 px-6 border-t border-slate-200 dark:border-slate-700">
-          <p className="text-center text-sm text-slate-500 dark:text-slate-400">
-            © 2023 Yantun Khaijan. All rights reserved.
-          </p>
-        </footer>
+        <Footer/>
       </body>
     </html>
   );

@@ -4,11 +4,17 @@
   --background: #ffffff;
   --foreground: #171717;
   
-  /* Yantun Khaijan Food Brand Colors (Light Mode) */
-  --color-primary: #ef4444;    /* Appetizing Red (যেমন: red-500) */
-  --color-secondary: #f97316;  /* Fresh Orange (যেমন: orange-500) */
-  --color-accent: #f59e0b;     /* Warm Amber (যেমন: amber-500) */
+  /* Ahar Food Brand Colors (Light Mode) */
+  --color-primary: #ef4444;       /* Appetizing Red */
+  --color-primary-hover: #dc2626; /* Deep Red for button hover */
+  --color-secondary: #f97316;     /* Fresh Orange */
+  --color-accent: #f59e0b;        /* Warm Amber */
+  
+  /* UI Components */
   --color-card-bg: #ffffff;
+  --color-border-color: #e2e8f0;  /* slate-200 */
+  --color-text-muted: #64748b;    /* slate-500 (সাবটাইটেল বা ডেসক্রিপশনের জন্য) */
+  --color-input-bg: #f8fafc;     /* slate-50 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,11 +22,17 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     
-    /* Dark Mode Food Colors (একটু সফট টোন যাতে চোখে না লাগে) */
-    --color-primary: #f87171;    /* red-400 */
-    --color-secondary: #fb923c;  /* orange-400 */
-    --color-accent: #fbbf24;     /* amber-400 */
-    --color-card-bg: #1e293b;    /* slate-800 */
+    /* Dark Mode Food Colors (চোখের শান্তির জন্য সফট টোন) */
+    --color-primary: #f87171;       /* red-400 */
+    --color-primary-hover: #fca5a5; /* red-300 */
+    --color-secondary: #fb923c;     /* orange-400 */
+    --color-accent: #fbbf24;        /* amber-400 */
+    
+    /* UI Components (Dark) */
+    --color-card-bg: #111827;       /* slate-900 */
+    --color-border-color: #1f2937;   /* slate-800 */
+    --color-text-muted: #94a3b8;     /* slate-400 */
+    --color-input-bg: #1f2937;      /* slate-800 */
   }
 }
 
@@ -30,11 +42,17 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   
-  /* Tailwind-এ ব্যবহার করার জন্য ভ্যারিয়েবল ম্যাপিং */
+  /* Brand System Utilities */
   --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
   --color-secondary: var(--color-secondary);
   --color-accent: var(--color-accent);
+  
+  /* Layout & Element Utilities */
   --color-card: var(--color-card-bg);
+  --color-border-theme: var(--color-border-color);
+  --color-muted: var(--color-text-muted);
+  --color-input-theme: var(--color-input-bg);
 }
 
 body {
