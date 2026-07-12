@@ -1,8 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const FoodCard = ({ food }) => {
-  const { title, foodImg, price, category } = food;
+  const { title, foodImg, price, category , id} = food;
 
   return (
     <div className="group bg-card border border-border-theme rounded-2xl overflow-hidden shadow-xs hover:shadow-lg dark:shadow-none transition-all duration-300 flex flex-col h-full max-w-[290px] sm:max-w-none mx-auto w-full">
@@ -39,9 +40,10 @@ const FoodCard = ({ food }) => {
         {/* Compact Action Buttons */}
         <div className="grid grid-cols-2 gap-2 mt-auto">
           {/* View Details */}
-          <button className="border border-border-theme hover:border-primary text-foreground hover:text-primary font-bold text-[11px] py-2.5 px-2 rounded-xl transition-all active:scale-[0.96] cursor-pointer text-center whitespace-nowrap">
+          <Link href={`/menu/${food.id}`}
+           className="border border-border-theme hover:border-primary text-foreground hover:text-primary font-bold text-[11px] py-2.5 px-2 rounded-xl transition-all active:scale-[0.96] cursor-pointer text-center whitespace-nowrap">
             Details
-          </button>
+          </Link>
           
           {/* Add to Cart */}
           <button className="bg-primary hover:bg-primary-hover text-white font-bold text-[11px] py-2.5 px-2 rounded-xl shadow-xs shadow-primary/5 transition-all active:scale-[0.96] cursor-pointer text-center whitespace-nowrap">
