@@ -5,7 +5,7 @@ const getSingleFood = async (id) => {
   try {
     const res = await fetch(
       `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
-      { next: { revalidate: 60 } }
+    //   { next: { revalidate: 60 } } for how long the data should be cached before revalidation
     );
     if (!res.ok) return null;
     const data = await res.json();
