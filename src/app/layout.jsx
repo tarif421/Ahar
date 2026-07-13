@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Yantun Khaijan",
+  title: "Ahar",
   description: "We Provide Your Test",
 };
 
