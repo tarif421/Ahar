@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Navbar from "./components/Home/layouts/Navbar";
 import Footer from "./components/Home/layouts/Footer";
+import CartProvider from "@/context/CartProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,10 +28,12 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <header className="py-2 md:w-11/12 md:mx-auto">
-          <Navbar/>
+          <Navbar />
         </header>
-        <main className="flex-grow py-6 px-6">{children}</main>
-        <Footer/>
+        <main className="flex-grow py-6 px-6">
+          <CartProvider>{children}</CartProvider>
+        </main>
+        <Footer />
       </body>
     </html>
   );
