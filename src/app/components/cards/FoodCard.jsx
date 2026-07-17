@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import CardButton from "../burrons/CardButton";
+import CardButton from "../buttons/CardButton";
 
 const FoodCard = ({ food }) => {
   const { title, foodImg, price, category, id } = food;
@@ -46,7 +46,7 @@ const FoodCard = ({ food }) => {
           </Link>
 
           {/* Add to Cart */}
-          <CardButton />
+          <CardButton food={food}></CardButton>
         </div>
       </div>
     </div>
