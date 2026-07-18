@@ -1,16 +1,19 @@
 import React from "react";
 import FoodCard from "../components/cards/FoodCard";
 import CartItems from "./CartItems";
-const getFoods = async () => {
+import InputSearch from "../components/Search/InputSearch";
+const getFoods = async (search) => {
   const res = await fetch(
-    "https://taxi-kitchen-api.vercel.app/api/v1/foods/random",
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`,
   );
   const data = await res.json();
   await new Promise((resolve) => setTimeout(resolve, 500));
   return data.foods || [];
 };
-const FoodMenu = async () => {
-  const foods = await getFoods();
+const FoodMenu = async ({ searchParams }) => {
+  const { search = "" } = await searchParams;
+  // console.log(data);
+  const foods = await getFoods(search);
   return (
     <div className="py-12 bg-transparent">
       {/* Centered Heading Section */}
@@ -41,22 +44,24 @@ const FoodMenu = async () => {
           <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
           <div className="w-12 h-1 bg-gradient-to-l from-primary to-transparent rounded-full" />
         </div>
+        <InputSearch></InputSearch>
       </div>
 
-     <div className="flex gap-5 ">
-       {/* Grid Layout Container */}
-      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
-        {foods.map((food) => (
-          <FoodCard key={food.id} food={food} />
-        ))}
-      </div>
-      <div className="border-2 border-primary rounded-2xl">
-        <div className="w-[250px] text-center intems-center border-primary border-2  border-b-0 rounded-3xl p-4">
-          <h2 className="text-2xl font-bold">Cart Items</h2> <hr className="border-primary-hover" />
-          <CartItems></CartItems>
+      <div className="flex gap-5 ">
+        {/* Grid Layout Container */}
+        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
+          {foods.map((food) => (
+            <FoodCard key={food.id} food={food} />
+          ))}
+        </div>
+        <div className="border-2 border-primary rounded-2xl">
+          <div className="w-[250px] text-center intems-center border-primary border-2  border-b-0 rounded-3xl p-4">
+            <h2 className="text-2xl font-bold">Cart Items</h2>{" "}
+            <hr className="border-primary-hover" />
+            <CartItems></CartItems>
+          </div>
         </div>
       </div>
-     </div>
     </div>
   );
 };
