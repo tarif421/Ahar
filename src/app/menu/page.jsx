@@ -4,7 +4,7 @@ import CartItems from "./CartItems";
 import InputSearch from "../components/Search/InputSearch";
 const getFoods = async (search) => {
   const res = await fetch(
-    `https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`,
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`,{next:{revalidate: 20}},
   );
   const data = await res.json();
   await new Promise((resolve) => setTimeout(resolve, 500));
