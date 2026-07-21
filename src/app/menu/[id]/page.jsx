@@ -4,7 +4,7 @@ import Image from "next/image";
 export function generateStaticParams() {
   return [{ id: "52898" }, { id: "52955" }, { id: "52926" }];
 }
-
+// dynamic food title
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const res = await fetch(

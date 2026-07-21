@@ -24,7 +24,7 @@ const Navbar = () => {
               <NavLink href="/">Home</NavLink>
             </li>
             <li>
-              <NavLink href="/menu">Menu</NavLink>
+              <NavLink prfetch={false} href="/menu">Menu</NavLink>
             </li>
             <li>
               <NavLink href="/reviews">Reviews</NavLink>

@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "./components/Home/layouts/Navbar";
@@ -15,10 +15,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const poppins = Poppins({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: {
     default: "Ahar",
-    template: "%s | Ahar"
+    template: "%s | Ahar",
   },
   description: "We Provide Your Test",
 };
@@ -27,7 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${poppins.className} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <header className="py-2 md:w-11/12 md:mx-auto">

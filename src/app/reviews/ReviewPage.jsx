@@ -3,6 +3,11 @@
 import React, { useEffect, useState } from "react";
 import ReviewCard from "../components/cards/ReviewCard";
 import ReviewLoading from "./ReviewLoading";
+import { Anek_Bangla } from "next/font/google";
+
+const anek = Anek_Bangla({
+  weight: ["600"],
+});
 
 const ReviewPage = () => {
   const [reviews, setReviews] = useState([]);
@@ -17,11 +22,11 @@ const ReviewPage = () => {
   }, []);
 
   if (loading) {
-    return  <ReviewLoading />;
+    return <ReviewLoading />;
   }
 
   return (
-    <div className="py-12 bg-transparent">
+    <div className={`py-12 bg-transparent ${anek.className}`}>
       {/* Centered Heading Section */}
       <div className="text-center max-w-2xl mx-auto space-y-3 mb-12 px-4">
         {/* Elegant Tiny Accent Upper Title using Theme Variables */}
