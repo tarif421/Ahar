@@ -2,9 +2,15 @@ import React from "react";
 import FoodCard from "../components/cards/FoodCard";
 import CartItems from "./CartItems";
 import InputSearch from "../components/Search/InputSearch";
+
+export const metadata = {
+  title: "Menu",
+  description: "We Provide Your Test",
+};
 const getFoods = async (search) => {
   const res = await fetch(
-    `https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`,{next:{revalidate: 20}},
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`,
+    { next: { revalidate: 20 } },
   );
   const data = await res.json();
   await new Promise((resolve) => setTimeout(resolve, 500));

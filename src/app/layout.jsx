@@ -16,7 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Ahar",
+  title: {
+    default: "Ahar",
+    template: "%s | Ahar"
+  },
   description: "We Provide Your Test",
 };
 

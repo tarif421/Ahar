@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Logo = () => {
+const 
+Logo = () => {
   return (
     <div className="flex items-center gap-3 cursor-pointer select-none group">
       {/* Dynamic Food Icon Container using Global Theme Variables */}
