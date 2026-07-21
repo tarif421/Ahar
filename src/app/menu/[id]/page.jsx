@@ -4,6 +4,19 @@ import Image from "next/image";
 export function generateStaticParams() {
   return [{ id: "52898" }, { id: "52955" }, { id: "52926" }];
 }
+
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const res = await fetch(
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
+    //   { next: { revalidate: 60 } } for how long the data should be cached before revalidation
+  );
+  if (!res.ok) return null;
+  const {details= {}} = await res.json();
+ return {
+  title: details.title,
+ }
+}
 const getSingleFood = async (id) => {
   try {
     const res = await fetch(
