@@ -17,7 +17,7 @@ const FeedbackForm = () => {
     const data = await res.json();
 
     if (data.insertedId) {
-      alert("success");
+      alert("Feedback added");
     }
   };
   return (

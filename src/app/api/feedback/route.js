@@ -1,4 +1,5 @@
 import { connect } from "@/app/lib/db.Connect";
+import { revalidatePath } from "next/cache";
 
 const feedbackCollection = await connect("feedbacks");
 export async function GET(request) {
@@ -19,6 +20,7 @@ export async function POST(request) {
   };
 
   const result = await feedbackCollection.insertOne(newFeedback);
+  revalidatePath("/feedbacks");
 
   return Response.json(result);
 }

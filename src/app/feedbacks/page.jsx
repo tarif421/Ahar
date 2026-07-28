@@ -7,7 +7,10 @@ export const metadata = {
 };
 
 const getFeedbacks = async () => {
-  const res = await fetch("http://localhost:3000/api/feedback/");
+  const res = await fetch("http://localhost:3000/api/feedback/", {
+    cache: "force-cache",
+    next: { revalidate: 60 },
+  });
   return await res.json();
 };
 
@@ -18,7 +21,10 @@ const FeedbackPage = async () => {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold"> {feedbacks.length} Feedbacks have found</h2>
+        <h2 className="text-2xl font-bold">
+          {" "}
+          {feedbacks.length} Feedbacks have found
+        </h2>
         <Link
           href="/feedbacks/add"
           className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-sm font-medium"
@@ -26,7 +32,7 @@ const FeedbackPage = async () => {
           Add Feedback
         </Link>
       </div>
-      
+
       {feedbacks.map((item) => (
         <FeedbackCard key={item._id} feedback={item} />
       ))}
