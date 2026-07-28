@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border-theme transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 flex items-center justify-between h-20">
         {/* Left Side: Brand Logo */}
-        <Logo   />
+        <Logo />
 
         {/* Center: Navigation Links (Desktop) */}
         <nav className="hidden md:flex items-center">
@@ -24,10 +24,15 @@ const Navbar = () => {
               <NavLink href="/">Home</NavLink>
             </li>
             <li>
-              <NavLink prfetch={false} href="/menu">Menu</NavLink>
+              <NavLink prfetch={false} href="/menu">
+                Menu
+              </NavLink>
             </li>
             <li>
               <NavLink href="/reviews">Reviews</NavLink>
+            </li>
+            <li>
+              <NavLink href="/feedbacks">Feedbacks</NavLink>
             </li>
             <li>
               <NavLink href="#about">About Us</NavLink>
