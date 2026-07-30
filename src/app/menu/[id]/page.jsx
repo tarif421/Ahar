@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export function generateStaticParams() {
   return [{ id: "52898" }, { id: "52955" }, { id: "52926" }];
@@ -12,10 +14,10 @@ export async function generateMetadata({ params }) {
     //   { next: { revalidate: 60 } } for how long the data should be cached before revalidation
   );
   if (!res.ok) return null;
-  const {details= {}} = await res.json();
- return {
-  title: details.title,
- }
+  const { details = {} } = await res.json();
+  return {
+    title: details.title,
+  };
 }
 const getSingleFood = async (id) => {
   try {
@@ -37,17 +39,21 @@ const page = async ({ params }) => {
   const { id } = resolvedParams;
   const food = await getSingleFood(id);
 
-  if (!food) {
-    return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4">
-        <p className="text-lg font-bold text-muted">
-          Mouthwatering dish not found!
-        </p>
-        <a href="/" className="text-sm font-bold text-primary hover:underline">
-          Back to Menu
-        </a>
-      </div>
-    );
+  if (!food.title) {
+    redirect("/menu")
+    // return (
+    //   <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4">
+    //     <p className="text-lg font-bold text-muted">
+    //       Mouthwatering dish not found!
+    //     </p>
+    //     <Link
+    //       href="/"
+    //       className="text-sm font-bold text-primary hover:underline"
+    //     >
+    //       Back to Menu
+    //     </Link>
+    //   </div>
+    // );
   }
 
   // ইউটিউব ইউআরএল থেকে এম্বেড আইডি বের করার লজিক
