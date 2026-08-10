@@ -9,7 +9,7 @@ const FeedbackForm = () => {
     e.preventDefault();
 
     const message = e.target.message.value;
-    const res = await fetch("http://localhost:3000/api/feedback", {
+    const res = await fetch(`${NEXT_PUBLIC_srever}/api/feedback`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

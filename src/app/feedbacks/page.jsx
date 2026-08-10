@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import React from "react";
 import Link from "next/link";
 import FeedbackCard from "../components/cards/FeedbackCard";
@@ -7,8 +9,8 @@ export const metadata = {
 };
 
 const getFeedbacks = async () => {
-  const res = await fetch("http://localhost:3000/api/feedback", {
-    cache: "force-cache",
+  const res = await fetch(`${process.env.NEXT_PUBLIC_server}/api/feedback`, {
+    // cache: "force-cache",
     next: { revalidate: 60 },
   });
   return await res.json();
