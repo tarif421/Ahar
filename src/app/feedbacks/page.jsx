@@ -9,24 +9,36 @@ export const metadata = {
 };
 
 const getFeedbacks = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_server}/api/feedback`, {
-    // cache: "force-cache",
-    next: { revalidate: 60 },
-  });
-  return await res.json();
-  
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_server;
+    if (!baseUrl) return [];
+
+    const res = await fetch(`${baseUrl}/api/feedback`, {
+      cache: "no-store", // force-dynamic এর সাথে no-store রাখা নিরাপদ
+    });
+
+    if (!res.ok) return [];
+
+    const data = await res.json();
+    // ডাটা নিশ্চিতভাবে Array কি না চেক করা
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    console.error("Fetch Error:", error);
+    return [];
+  }
 };
 
 const FeedbackPage = async () => {
-  const feedbacks = await getFeedbacks();
-
+  const rawData = await getFeedbacks();
+  
+  // MongoDB Object & Date Serialization নিরাপদ করা
+  const feedbacks = JSON.parse(JSON.stringify(rawData));
 
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">
-          {" "}
-          {feedbacks.length} Feedbacks have found
+          {feedbacks?.length || 0} Feedbacks have found
         </h2>
         <Link
           href="/feedbacks/add"
@@ -36,9 +48,13 @@ const FeedbackPage = async () => {
         </Link>
       </div>
 
-      {feedbacks.map((item) => (
-        <FeedbackCard key={item._id} feedback={item} />
-      ))}
+      {feedbacks && feedbacks.length > 0 ? (
+        feedbacks.map((item, index) => (
+          <FeedbackCard key={item._id || index} feedback={item} />
+        ))
+      ) : (
+        <p className="text-gray-500 mt-4">No feedbacks found.</p>
+      )}
     </div>
   );
 };
